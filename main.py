@@ -9,7 +9,27 @@ def create_number():
 
 
 def start():
-    pass
+    # print("|\\       /|        /\\       |\n"
+    #       "| \\     / |       /  \\      |\n"
+    #       "|  \\   /  |      /____\\     |\n"
+    #       "|   \\ /   |     /      \\    |\n"
+    #       "|         |    /        \\   |")
+    print("╔╗  ╔╗ ╔══╗ ╔══╗ ╔════╗ ╔═══╗ ╔═══╗    ╔╗  ╔╗ ╔══╗ ╔╗ ╔╗ ╔══╗ \n"
+          "║║  ║║ ║╔╗║ ║╔═╝ ╚═╗╔═╝ ║╔══╝ ║╔═╗║    ║║  ║║ ╚╗╔╝ ║╚═╝║ ║╔╗╚╗\n"
+          "║╚╗╔╝║ ║╚╝║ ║╚═╗   ║║   ║╚══╗ ║╚═╝║    ║╚╗╔╝║  ║║  ║╔╗ ║ ║║╚╗║\n"
+          "║╔╗╔╗║ ║╔╗║ ╚═╗║   ║║   ║╔══╝ ║╔╗╔╝    ║╔╗╔╗║  ║║  ║║╚╗║ ║║ ║║\n"
+          "║║╚╝║║ ║║║║ ╔═╝║   ║║   ║╚══╗ ║║║║     ║║╚╝║║ ╔╝╚╗ ║║ ║║ ║╚═╝║\n"
+          "╚╝  ╚╝ ╚╝╚╝ ╚══╝   ╚╝   ╚═══╝ ╚╝╚╝     ╚╝  ╚╝ ╚══╝ ╚╝ ╚╝ ╚═══╝")
+    start_game = input("Введите p, чтобы ознакомиться с правилами\n"
+                       "Введите s, чтобы начать \n").lower()
+    if start_game == "p":
+        print("Правила")
+        main()
+    elif start_game == "s":
+        pass
+    else:
+        print("Введено неправильное значение")
+        main()
 
 
 def correct_input(number):
@@ -41,18 +61,7 @@ def check(number, count_now):
 
 
 def main():
-    start_game = input("MasterMind \n"
-                       "Введите p, чтобы ознакомиться с правилами\n"
-                       "Введите s, чтобы начать \n").lower()
-    if start_game == "p":
-        print("Правила")
-        main()
-    elif start_game == "s":
-        pass
-    else:
-        print("Введено неправильное значение")
-        main()
-
+    start()
     game = True
     count = 1
     count_now = create_number()
@@ -72,4 +81,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    start()
+    # main()
