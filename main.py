@@ -43,6 +43,10 @@ def rules():
 
 
 def correct_input(number):
+    try:
+        int(number)
+    except ValueError:
+        return False
     return len(number) == 4 and (int(number) or number == "0000")
 
 
@@ -76,18 +80,43 @@ def main():
     count = 1
     count_now = create_number()
 
+    print("══════════════════════════════════════════════════════════════╗\n"
+          "                                                              ║")
+    print("                      ╔═════════════════╗                     ║\n"
+          "                      ║   Master Mind   ║                     ║\n"
+          "                      ╚═════════════════╝                     ║\n"
+          "                      ╚╗   BY PavelG   ╔╝                     ║", )
+    input_number = input(f"                       ║═══════════════║                      ║  Попытка номер {count}, введите число: ")
     while game:
-        input_number = input(f"Попытка номер {count}, введите число: ")
+        count += 1
         if correct_input(input_number):
             coincidence, twice, win = check(input_number, count_now)
+            n = input_number
+            print(f"          Совпадает: {coincidence} ║ {n[0]} ║ {n[1]} ║ {n[2]} ║ {n[3]} ║ На местах: {twice}         ║  Попытка номер {count}, введите число: ", end="")
             if win:
-                print(f"Победа, вы уложились в {count} ходов")
+                count -= 1
+                i = str(count)
+                a1, a2, a3 = " ", " ", " "
+                if len(str(count)) == 1:
+                    a2 = i[0]
+                elif len(str(count)) == 2:
+                    a1, a2, a3 = "0", i[0], i[1]
+                elif len(str(count)) == 3:
+                    a1, a2, a3 = i[0], i[1], i[2]
+                else:
+                    a1, a2, a3 = "-", "-", "-"
+                print("\n                       ╚╗═════════════╔╝\n"
+                      "                        ║   Победа!   ║\n"
+                      "                        ╚═══╗═════╔═══╝\n"
+                      f"                            ║ {a1}{a2}{a3} ║\n"
+                      f"                            ╚═════╝")
                 break
-            print(f"Совпадает: {coincidence} \n"
-                  f"На своих местах: {twice}")
-            count += 1
         else:
-            print("Введено неправильное значение")
+            print(
+                f"        Не верный ввод ║ ═ ║ ═ ║ ═ ║ ═ ║ Не верный ввод       ║  Попытка номер {count}, введите число: ",
+                end="")
+
+        input_number = input()
 
 
 if __name__ == '__main__':
